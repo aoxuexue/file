@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>图片翻动</title>
+		<style type="text/css">
+			ul,li{
+				margin: 0;
+				padding: 0;
+			}
+			img{
+				vertical-align: top;
+			}
+			li{
+				list-style: none;
+			}
+			ul{
+				width: 900px;
+				margin: 0 auto;
+				
+			}
+			li{
+				float: left;
+				width: 260px;
+				height: 120px;
+				margin: 10px 20px;
+				position: relative;
+				overflow: hidden;
+			}
+			img{
+				height: 120px;
+				width: 260px;
+			}
+			div{
+				position: absolute;
+				top:0;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>
+				<div>
+					<img src="img/1.jpg"/>
+					<img src="img/10.jpg"/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img/2.jpg"/>
+					<img src="img/3.jpg"/>
+					<img src="img/4.jpg"/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img/5.jpg"/>
+					<img src="img/2.jpg"/>
+					<img src="img/4.jpg"/>
+					<img src="img/6.jpg"/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img/4.jpg"/>
+					<img src="img/8.jpg"/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img/7.jpg"/>
+					<img src="img/8.jpg"/>
+					<img src="img/9.jpg"/>
+					<img src="img/3.jpg"/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img/7.jpg"/>
+				  	<img src="img/10.jpg"/>
+				  	<img src="img/2.jpg"/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img/1.jpg"/>
+					<img src="img/5.jpg"/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img/4.jpg"/>
+					<img src="img/7.jpg"/>
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img/4.jpg"/>
+					<img src="img/5.jpg"/>
+					<img src="img/7.jpg"/>
+				</div>
+			</li>
+		</ul>
+		<script type="text/javascript" src="js/mQuery.js"></script>
+		<script type="text/javascript" src="js/mTween.js"></script>
+		<script type="text/javascript" src="js/tween.js"></script>
+		<script type="text/javascript">
+		//通过封装的函数，获取元素 js/mQuery
+			var divs = $('div');
+			var imgs = $('img');
+			//console.log(imgs);
+			var len;
+			//获取img高度,取整
+			var height = parseFloat(getComputedStyle(imgs[0]).height);
+			//循环所有的div
+			for(var i=0;i<divs.length;i++){
+				//获取每一个div下面图片的长度
+				len =$('img',divs[i]).length;
+				
+				divs[i].num = 0;
+				
+				divs[i].n = 1;
+				//调用函数，实参
+				a(divs[i],len);
+				
+			}
+			//封装函数，形参
+			function a(obj,len){
+				//延时定时器
+				setTimeout(function(){
+					//div.num =div.n时
+					obj.num += obj.n;
+					//当div.num 等于图片最后一个时
+					if(obj.num == len-1){
+						obj.n = -1;
+					}
+					//当div.num 等于0时
+					if(obj.num == 0){
+						obj.n = 1;
+					}
+					//调用运动函数
+					mTween(obj,'top',-height*obj.num,200,'linear',function(){
+						//函数内部调用函数，形参
+						a(obj,len);
+					})
+					//返回一个无限且不循不的从0到1之间小数，随机数
+				},Math.random()*2000+1000)
+			}
+			
+			
+		</script>
+	</body>
+</html>
