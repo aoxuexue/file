@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			ul{
+				margin: 0;
+				padding: 0;
+			}
+			li{
+				list-style: none;
+				float: left;
+				width: 50px;
+				height: 70px;
+				position: relative;
+			}
+			div{
+				width: 100%;
+				height: 100%;			
+				position: absolute;
+				left: 0;
+			}
+			img{
+				width: 100%;
+				height: 100%;
+				vertical-align: top;
+			}
+		</style>
+	</head>
+	<body>
+		<ul>
+			<li>
+				<div>
+					<img src="img/0.jpg">
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img/0.jpg">
+				</div>
+			</li>
+			<li>
+				<img src="img/c.jpg">
+			</li>
+			<li>
+				<div>
+					<img src="img/0.jpg">
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img/0.jpg">
+				</div>
+			</li>
+			<li>
+				<img src="img/c.jpg">
+			</li>
+			<li>
+				<div>
+					<img src="img/0.jpg">
+				</div>
+			</li>
+			<li>
+				<div>
+					<img src="img/0.jpg">
+				</div>
+			</li>
+		</ul>
+		<script type="text/javascript" src="mTween.js"></script>	
+		<script type="text/javascript" src="tween.js"></script>
+			
+		<script type="text/javascript">
+			var imgs1 = document.querySelectorAll('li>img');
+			var divs = document.querySelectorAll('li>div');
+			var date = new Date();//获取本机时间
+			var h = date.getHours();//获取小时
+			var m = date.getMinutes();//获取分钟
+			var s = date.getSeconds();//获取秒钟
+			//时间拼接成字符串
+			var time = tozero(h)+tozero(m)+tozero(s);
+			//获取本机时间的秒数，Math.ceil(向上取整)
+			var num = Math.ceil(date.getTime()/1000);
+			//循环给每个图片对应的时间，初始化时间
+			for(var i=0;i<time.length;i++){				
+				divs[i].getElementsByTagName('img')[0].src = 'img/'+time[i]+'.jpg';	
+			}
+			//循环定时器	
+			setInterval(function(){
+				//获取时间
+				 date = new Date();
+				 h = date.getHours();//获取小时
+				 m = date.getMinutes();//获取分钟
+				 s = date.getSeconds();//获取秒钟
+				//时间拼接成字符串
+				 time = tozero(h)+tozero(m)+tozero(s);
+				
+				//调用运动函数，实参
+					a(divs[5],time[5]);
+				//判断秒数的第一位，取模求余，条件成立，执行翻转
+				if(num%10 == 0){
+					a(divs[4],time[4]);
+				}
+				//判断分钟的第二位，取模求余，条件成立，执行翻转
+				if(num%60 == 0){
+					a(divs[3],time[3]);
+				}
+				//判断分钟的第一位，取模求余，条件成立，执行翻转
+				if(num%600 == 0){
+					a(divs[2],time[2]);
+				}
+				//判断时钟的第二位，取模求余，条件成立，执行翻转
+				if(num%3600 == 0){
+					a(divs[1],time[1]);
+				}
+				//判断时钟的第一位，取模求余，条件成立，执行翻转
+				if(num%36000 == 0){
+					a(divs[0],time[0]);
+				}
+				num++;
+				//console.log(num);
+				
+				//图片2个点闪烁的实现
+				for(var i=0;i<imgs1.length;i++){				
+					imgs1[i].src = 'img/c.jpg';
+				}
+				//延时定时器，圆点延迟半秒闪烁
+				setTimeout(function(){
+					for(var i=0;i<imgs1.length;i++){
+						imgs1[i].src = 'img/b.jpg';
+					}
+				},500)
+					
+			},1000)
+			//封装函数，给小于10的时间十位上添0
+			function tozero(n){
+				return n<10? '0'+n:''+n;//三元运算符
+			}
+			//封装运动函数，形参
+			function a(divs,time){
+				mTween(divs,'width',0,500,'linear',function(){
+					//获取divs下面图片的地址，对应相对的时间
+						divs.getElementsByTagName('img')[0].src = 'img/'+time+'.jpg';
+						mTween(divs,'width',50,500,'linear')
+					})
+					mTween(divs,'left',25,500,'linear',function(){
+						mTween(divs,'left',0,500,'linear')
+					})
+				
+			}
+			
+			
+		</script>
+	</body>
+</html>
