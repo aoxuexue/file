@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			div{
+				width: 50px;
+				height: 50px;
+				background: red;
+				position: absolute;
+			}
+		</style>
+		
+	
+	</head>
+	<body>
+		<script type="text/javascript">
+		var len = 21;
+		var str = '';
+		
+		for(var i=0;i<len;i++){
+			if(i < len/2){ 
+				str += '<div style="left:'+i*60+'px;top:'+i*60+'px;">'+i+'</div>';
+			}else{
+				str +='<div style="left:'+i*60+'px;top:'+(len-i-1)*60+'px;">'+i+'</div>';
+			}
+			
+		}
+		
+		document.body.innerHTML = str;
+		
+			
+			
+		</script>
+		
+	</body>
+</html>

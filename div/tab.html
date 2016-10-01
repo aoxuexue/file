@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style type="text/css">
+			p{
+				display:none;
+			}
+			.active{
+				background: indigo;
+			}
+			.show{
+				display:block;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="button" id="" value="按纽1" class="active" />
+		<input type="button" id="" value="按纽2" />
+		<input type="button" id="" value="按纽3" />
+		<input type="button" id="" value="按纽4" />
+		<input type="button" id="" value="按纽5" />
+		<p class="show">选项卡1</p>
+		<p>选项卡2</p>
+		<p>选项卡3</p>
+		<p>选项卡4</p>
+		<p>选项卡5</p>
+		<script type="text/javascript">
+			var buts = document.getElementsByTagName('input');
+			var ps = document.getElementsByTagName('p');
+			
+		for(var i=0;i<buts.length;i++){
+			buts[i].index = i;
+			//给每一个按钮写一个自定义属性index，index保存一个值i;
+			//给每一个按钮写一个事件
+			buts[i].onclick = function(){
+				for(var i=0;i<buts.length;i++){
+					//清除所有的class
+					buts[i].className = '';
+					ps[i].className = '';
+				}
+				//给当前点击的目标加上class  active
+				this.className = 'active'; 
+				//给与被点击的按钮相对应的p标签加class
+				ps[this.index].className = 'show';
+			}
+			
+			
+		}
+			
+		</script>
+	</body>
+</html>
