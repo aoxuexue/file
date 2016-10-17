@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>生成100个DIV</title>
+		<style type="text/css">
+			div{
+				width: 50px;
+				height: 50px;
+				text-align: center;
+				line-height: 50px;
+				font-size: 30px;
+				color: white;
+				position: absolute;
+				left: 0;
+				top: 0;
+				border: 2px solid orangered;
+				
+			}
+			
+		
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+		
+			var arr = ['darkcyan','red','lawngreen','darkmagenta','lightblue'];
+			var str='';
+			
+			for(var i=0;i<100;i++){
+				
+					//取模求余，生成为整数的DIV
+					if(i%10==0){
+						
+						str += '<div style="left:'+i%10*60+'px;top:'+i*6+'px;">'+i+'</div>';
+						
+					}
+					//取模求余，生成余数为1的DIV
+					if(i%10==1){
+						alert(i);
+						str += '<div style="left:'+i%10*60+'px;top:'+(i-1)*6+'px;">'+i+'</div>';
+						
+					}	
+					//取模求余，生成余数为2的DIV
+					if(i%10==2){
+		
+						str += '<div style="left:'+i%10*60+'px;top:'+(i-2)*6+'px;">'+i+'</div>';
+						
+					}	
+					//取模求余，生成余数为3的DIV
+					if(i%10==3){
+		
+						str += '<div style="left:'+i%10*60+'px;top:'+(i-3)*6+'px;">'+i+'</div>';
+						
+					}	
+					//取模求余，生成余数为4的DIV
+					if(i%10==4){
+		
+						str += '<div style="left:'+i%10*60+'px;top:'+(i-4)*6+'px;">'+i+'</div>';
+						
+					}
+					//取模求余，生成余数为5的DIV
+					if(i%10==5){
+		
+						str += '<div style="left:'+i%10*60+'px;top:'+(i-5)*6+'px;">'+i+'</div>';
+						
+					}	
+					//取模求余，生成余数为6的DIV
+					if(i%10==6){
+		
+						str += '<div style="left:'+i%10*60+'px;top:'+(i-6)*6+'px;">'+i+'</div>';
+						
+					}	
+					//取模求余，生成余数为7的DIV	
+					if(i%10==7){
+		
+						str += '<div style="left:'+i%10*60+'px;top:'+(i-7)*6+'px;">'+i+'</div>';
+						
+					}	
+					
+					//取模求余，生成余数为8的DIV	
+					if(i%10==8){
+		
+						str += '<div style="left:'+i%10*60+'px;top:'+(i-8)*6+'px;">'+i+'</div>';
+						
+					}	
+					//取模求余，生成余数为9的DIV	
+					if(i%10==9){
+		
+						str += '<div style="left:'+i%10*60+'px;top:'+(i-9)*6+'px;">'+i+'</div>';
+						
+					}	
+					
+					/*else{
+						str += '<div style="left:'+i*60+'px";>'+i+'</div>';
+					}*/
+
+					
+				
+			}
+			document.body.innerHTML = str;
+		
+			var divs = document.getElementsByTagName('div');
+			/*console.log(divs.length);*/
+			
+			
+			for(var j=0; j<divs.length; j++){
+				
+				//取模求余，改变DIV的背景颜色
+				if(j%5==0){
+					divs[j].style.background=arr[4];
+				}
+				
+				if(j%5==1){
+					divs[j].style.background=arr[2];
+				}
+				
+				if(j%5==2){
+					divs[j].style.background=arr[3];
+				}
+				
+				if(j%5==3){
+					divs[j].style.background=arr[1];
+				}
+				
+				if(j%5==4){
+					divs[j].style.background=arr[0];
+				}
+				
+				
+			}
+			
+		</script>
+	</body>
+	
+</html>

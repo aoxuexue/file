@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>生成10个DIV</title>
+		<style type="text/css">
+			
+			div{
+				width: 50px;
+				text-align: center;
+				line-height: 50px;
+				position: absolute;
+				border: 2px solid indianred;
+				background: darkblue;
+			}
+			span{
+				color: white;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			
+			var str='';
+			for(var i=0;i<10;i++){
+				str += '<div style="left:'+i*60+'px"><span>'+i+'</span></div>'
+				
+			}
+			document.body.innerHTML = str;
+		</script>
+	</body>
+</html>

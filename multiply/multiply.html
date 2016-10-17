@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>js生成九九乘法表</title>
+		<style type="text/css">
+			span{
+				width: 100px;
+				height: 50px;
+				background: lightcoral;
+				line-height: 50px;
+				font-size: 20px;
+				color: white;
+				text-align: center;
+				border: 2px solid royalblue;
+				display: inline-block;
+				margin-bottom: 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<script type="text/javascript">
+			/*var divs = document.getElementsByTagName('div');
+			var str='';
+			for(var i=1;1<=9;i++){
+				alert(i);
+				for(var j=1;j<=i;j++){
+					str += '<div >'+i+'x'+j+'=('+i+'*'+j+')</div>'; 
+				}
+			}
+			document.body.innerHTML = str;
+			*/
+			
+			for (var i=1;i<10;i++){
+          		for(var j=1;j<=i;j++){
+          		 	
+           			document.writeln ("<span>"+ j + "*" + i + "=" + (j * i) + "</span>");
+           			/*alert(i);*/
+           			
+         		}
+          		 	document.writeln("<br/>");
+    		}
+		</script>
+		
+	</body>
+</html>
